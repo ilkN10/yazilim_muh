@@ -1,4 +1,4 @@
-Yazılım mühendisliği projesi 
+Yazılım mühendisliği ödevi
 1.gün
 2.gün 
 3.gün
