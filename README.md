@@ -4,3 +4,5 @@ Yazılım mühendisliği ödevi
 3.gün
 4.gün
 5.gün
+6.gün 
+7.gün
