@@ -1,20 +1,46 @@
-x = 0.5 # Initialize value for function
-f = (x - 1) ** 2 * (x - 2) * (x - 3)  # Function
-f1 = 2 * (x - 1) * (x - 2) * (x - 3) + (x - 1) ** 2 * (2 * x - 5)  # First derivative - ilk türev
-f2 = 2 * (x - 2) * (x - 3) + 2 * (x - 1) * (2 * x - 5) + 2 * (x - 1) * (2 * x - 5) + 2 * (x - 1) ** 2 # Second derivate - ikinci türev
 
-dx = -f1 / f2
-iteration = 0 #Counter
+x = 0.5  
+tolerance = 1e-10
+max_iterations = 100
+iteration = 0
 
-print("--",iteration, "  x:",x," f:",f," f1:",f1,"  f2:",f2,"  dx:",dx) # Initialize values
+def f(x):
+    return (x - 1) ** 2 * (x - 2) * (x - 3)
 
-while abs(dx) > 1e-10:
+def f1(x):
+    return 2 * (x - 1) * (x - 2) * (x - 3) + (x - 1) ** 2 * (2 * x - 5)
+
+def f2(x):
+    return (
+        2 * (x - 2) * (x - 3)
+        + 4 * (x - 1) * (2 * x - 5)
+        + 2 * (x - 1) ** 2
+    )
+
+
+f_val = f(x)
+f1_val = f1(x)
+f2_val = f2(x)
+dx = -f1_val / f2_val
+
+print(f"-- {iteration}  x: {x:.6f}  f: {f_val:.6f}  f1: {f1_val:.6f}  f2: {f2_val:.6f}  dx: {dx:.6f}")
+
+
+while abs(dx) > tolerance and iteration < max_iterations:
+    x = x + dx
     iteration += 1
-    x = x + dx # Update value
 
-    f = (x - 1) ** 2 * (x - 2) * (x - 3)
-    f1 = 2 * (x - 1) * (x - 2) * (x - 3) + (x - 1) ** 2 * (2 * x - 5)
-    f2 = 2 * (x - 2) * (x - 3) + 2 * (x - 1) * (2 * x - 5) + 2 * (x - 1) * (2 * x - 5) + 2 * (x - 1) ** 2
+    f_val = f(x)
+    f1_val = f1(x)
+    f2_val = f2(x)
 
-    dx = -f1 / f2 # Instability
-    print("--", iteration, " x: ",round(x,4), "f: ", round(f,4), "f1: ", round(f1,4), "f2: ", round(f2,4), "dx: ", round(dx,4))
+    if f2_val == 0:
+        print("Sıfıra bölme hatası! f2 = 0 oldu.")
+        break
+
+    dx = -f1_val / f2_val
+
+    print(f"-- {iteration}  x: {x:.6f}  f: {f_val:.6f}  f1: {f1_val:.6f}  f2: {f2_val:.6f}  dx: {dx:.6f}")
+
+# Sonuç
+print(f"\nYaklaşık kök: {x:.10f}  f(x): {f(x):.10f}  Toplam iterasyon: {iteration}")
