@@ -16,3 +16,6 @@ Yazılım mühendisliği ödevi
 15.gün
 16.gün 
 17.gün
+18.gün
+19.gün 
+20.gün
