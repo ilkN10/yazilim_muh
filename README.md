@@ -1,2 +1,2 @@
 Yazılım mühendisliği ödevi
-29.gün tamamlandı
+30.gün tamamlandı
